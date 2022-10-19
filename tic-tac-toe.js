@@ -2,14 +2,26 @@
 
 //Board layout
 //Setting each div inside game board as a CSS class square
-/*Deciding whether to use classList property, setAttribute() method 
-    or className Property
-*/
-//Deciding to use onload or DOMContentLoader handler
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
+
+let board = document.querySelectorAll("#board div");
+
+for(let square of board){
+
+        square.classList.add('square')
+}
+
+});
+
 
 //X or O to the screen
 //Initializing Empty Array for tracking state of the game
 //use innerHTML or textContent property to make X or O show up
+
+var State=[];
 
 //Changing styles using hover
 
