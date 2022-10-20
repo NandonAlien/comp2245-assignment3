@@ -101,8 +101,20 @@ function WinCond(){
     }
     }
 
+function StateChecker(x){
+    if(State.length != 0){
+    for (let a of State){
+        if (a == x)
+            return true;
+    }}
+
+    if (State.length>= 9){return true;} 
+
+        return false;
 
 
+}
+//LOADED DOM
 window.addEventListener('DOMContentLoaded', (event) => {
 
 
@@ -111,9 +123,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 var board = document.querySelectorAll("#board div");
 
 function Determinant(x){
-
-     if (State.length>= 9){return; }   
-
+   
+if (StateChecker(x)!= true){
      switch (State.length%2) {
         case 0:            
             document.getElementById(x).innerHTML="X";
@@ -132,8 +143,11 @@ function Determinant(x){
             break;
     }
 
-    State.push(0);    
+    State.push(x);    
     WinCond()
+}
+
+
 }
 
 function Hover(x){
@@ -150,7 +164,7 @@ for(let square of board){
         square.setAttribute("id", id )
         square.onmouseover =function(){Hover(square.getAttribute("id"))};
         square.onmouseout =function(){Leave(square.getAttribute("id"))};
-        square.onclick=function(){Determinant(square.getAttribute("id",))};
+        square.onclick=function(){Determinant(square.getAttribute("id"))};
         
     };
 function ErasorX(){
@@ -196,17 +210,4 @@ function Erasor(){
 
 
 
-
-
-
-
-//Check for the winner
-//div with id = status is where the message should be placed in
-//  using innerHTML or textContent property to place in the status div
-//Adding class you-won to status div
-  
-
-//Restarting the game
-//clicks a new game button
-//checking for X and O in square for deletion
-//use click event
+ 
