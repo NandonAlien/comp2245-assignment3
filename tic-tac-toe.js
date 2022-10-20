@@ -18,11 +18,11 @@ function Win(x){
 
     switch (x) {
         case 1:
-            document.getElementById('status').innerHTML = "Congratulations! X is the Winner!"
+            document.getElementById('status').innerHTML = "Congratulations! X is the Winner!";
             break;
     
         case 2:
-            document.getElementById('status').innerHTML = "Congratulations! O is the Winner!"
+            document.getElementById('status').innerHTML = "Congratulations! O is the Winner!";
             break;
     }
     document.getElementById('status').classList.add("you-won");
@@ -112,7 +112,7 @@ var board = document.querySelectorAll("#board div");
 
 function Determinant(x){
 
-     if (State.length> 9){return; }   
+     if (State.length>= 9){return; }   
 
      switch (State.length%2) {
         case 0:            
@@ -153,30 +153,42 @@ for(let square of board){
         square.onclick=function(){Determinant(square.getAttribute("id",))};
         
     };
-function ErasorS(x){
-if(x!=0){
-    eras = x.length
-for(var i = 0; i < eras; i++)
-    {
-        document.getElementById(x).innerHTML = null
-        x.pop()
+function ErasorX(){
+if(Xpoint.length!=0){
+   for(let s of Xpoint)
+   {
+    document.getElementById(s).innerHTML="";
+    document.getElementById(s).classList.remove("X");
+
+   }
+   Xpoint=[];
+}
+}
+function ErasorO(){
+    if(Opoint.length!=0){
+       for(let s of Opoint)
+       {
+        document.getElementById(s).innerHTML="";
+        document.getElementById(s).classList.remove("O");
+    
+       }
+       Opoint=[];
     }
-}
-}
+    }
 
-
+    
 
 function Erasor(){
-    console.log("Start")
-    ErasorS(Opoint);
-    ErasorS(Xpoint);
-    document.getElementById('status').innerHTML = null
+
+    ErasorO();
+    ErasorX();
+    document.getElementById('status').innerHTML = "Move your mouse over a square and click to play an X or an O."
     document.getElementById('status').classList.remove("you-won"); 
-    console.log("Stop")
+    State = []
 }
 
-  var NGme=document.getElementsByClassName("btn");
-    NGme.onclick = function(){Erasor};
+  document.querySelector(".btn").onclick = function(){Erasor()};
+
 
 
 });
