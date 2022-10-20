@@ -2,26 +2,65 @@
 
 //Board layout
 //Setting each div inside game board as a CSS class square
-
-
+var State=[];
+var id= 0
 window.addEventListener('DOMContentLoaded', (event) => {
 
+    
 
-let board = document.querySelectorAll("#board div");
+var board = document.querySelectorAll("#board div");
+
+function Determinant(x){
+
+     //if (State.length> 9){return; }   
+
+     switch (State.length%2) {
+        case 0:            
+            document.getElementById(x).innerHTML="X";
+            document.getElementById(x).classList.add("X");
+            break;    
+        case 1:
+            document.getElementById(x).innerHTML="O";
+            document.getElementById(x).classList.add("O");
+            break;
+        default:
+            document.getElementById(x).innerHTML="X";
+            document.getElementById(x).classList.add("X");
+            break;
+    }
+    State.push(0)
+    
+};
+
+function Hover(x){
+            document.getElementById(x).classList.add('hover');
+}
+
+function Leave(x){
+            document.getElementById(x).classList.remove('hover')
+}
 
 for(let square of board){
+    id = id+1
+        square.classList.add('square');
+        square.setAttribute("id", id )
+        square.onmouseover =function(){Hover(square.getAttribute("id"))};
+        square.onmouseout =function(){Leave(square.getAttribute("id"))};
+        square.onclick=function(){Determinant(square.getAttribute("id",))};
+        
+    };
 
-        square.classList.add('square')
-}
+
+
+
 
 });
 
 
-//X or O to the screen
-//Initializing Empty Array for tracking state of the game
-//use innerHTML or textContent property to make X or O show up
 
-var State=[];
+
+
+
 
 //Changing styles using hover
 
