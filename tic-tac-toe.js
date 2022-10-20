@@ -26,6 +26,7 @@ function Win(x){
             break;
     }
     document.getElementById('status').classList.add("you-won");
+    State.length = 9
 }
 function Choice(x, o){
 
@@ -111,6 +112,8 @@ function StateChecker(x){
     if (State.length>= 9){return true;} 
 
         return false;
+    
+    
 
 
 }
